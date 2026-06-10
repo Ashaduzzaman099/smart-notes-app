@@ -28,9 +28,17 @@ export default function useNotes() {
     setNotes(filtered);
   };
 
+  // Update Note
+  const updateNote = (id, updatedData) => {
+    setNotes((prev) =>
+      prev.map((note) => (note.id === id ? { ...note, ...updatedData } : note)),
+    );
+  };
+
   return {
     notes,
     addNote,
     deleteNote,
+    updateNote,
   };
 }
