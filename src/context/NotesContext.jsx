@@ -24,3 +24,61 @@ function notesReducer(state, action) {
       return state;
   }
 }
+
+export function NotesProvider({ children }) {
+  const [notes, dispatch] = useReducer(notesReducer, [], () => {
+    const saved = localStorage.getItem("notes");
+
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
+
+  const addNote = (title, content) => {
+    dispatch({
+      type: "ADD_NOTE",
+      payload: {
+        id: Date.now(),
+        title,
+        content,
+        createdAt: new Date(),
+      },
+    });
+  };
+
+  const deleteNote = (id) => {
+    dispatch({
+      type: "DELETE_NOTE",
+      payload: id,
+    });
+  };
+
+  const updateNote = (id, data) => {
+    dispatch({
+      type: "UPDATE_NOTE",
+      payload: {
+        id,
+        data,
+      },
+    });
+  };
+
+  return (
+    <NotesContext.Provider
+      value={{
+        notes,
+        addNote,
+        deleteNote,
+        updateNote,
+      }}
+    >
+      {children}
+    </NotesContext.Provider>
+  );
+}
+
+export function useNotes() {
+  return useContext(NotesContext);
+}
