@@ -3,7 +3,7 @@ import Header from "../components/layout/Header";
 import NoteForm from "../components/notes/NoteForm";
 import NoteList from "../components/notes/NoteList";
 import SearchBar from "../components/notes/SearchBar";
-import useNotes from "../hooks/useNotes";
+import { useNotes } from "../context/NotesContext";
 
 export default function Home() {
   const { notes, addNote, deleteNote, updateNote } = useNotes();
