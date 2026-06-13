@@ -19,7 +19,6 @@ function notesReducer(state, action) {
             }
           : note,
       );
-
     default:
       return state;
   }
@@ -28,7 +27,6 @@ function notesReducer(state, action) {
 export function NotesProvider({ children }) {
   const [notes, dispatch] = useReducer(notesReducer, [], () => {
     const saved = localStorage.getItem("notes");
-
     return saved ? JSON.parse(saved) : [];
   });
 
