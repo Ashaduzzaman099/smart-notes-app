@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 
-export default function NoteCard({ note, onDelete, onUpdate }) {
+function NoteCard({ note, onDelete, onUpdate }) {
   const [isEditing, setIsEditing] = useState(false);
 
   const [title, setTitle] = useState(note.title);
@@ -65,3 +65,5 @@ export default function NoteCard({ note, onDelete, onUpdate }) {
     </div>
   );
 }
+
+export default memo(NoteCard);
