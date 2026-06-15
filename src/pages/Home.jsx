@@ -1,4 +1,8 @@
-import { useMemo, useState } from "react";
+import {
+  useMemo,
+  useState,
+  useCallback,
+} from "react";
 import Header from "../components/layout/Header";
 import NoteForm from "../components/notes/NoteForm";
 import NoteList from "../components/notes/NoteList";
@@ -9,6 +13,16 @@ export default function Home() {
   const { notes, addNote, deleteNote, updateNote } = useNotes();
 
   const [searchTerm, setSearchTerm] = useState("");
+
+  const handleDelete =
+  useCallback((id) => {
+    deleteNote(id);
+  }, [deleteNote]);
+
+  const handleUpdate =
+  useCallback((id, data) => {
+    updateNote(id, data);
+  }, [updateNote]);
 
   const filteredNotes = useMemo(() => {
     return notes.filter((note) => {
@@ -26,8 +40,8 @@ export default function Home() {
       <NoteForm onAdd={addNote} />
       <NoteList
         notes={filteredNotes}
-        onUpdate={updateNote}
-        onDelete={deleteNote}
+        onUpdate={handleUpdate}
+        onDelete={handleDelete}
       />
     </div>
   );
