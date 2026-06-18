@@ -24,6 +24,7 @@ function notesReducer(state, action) {
   }
 }
 
+//
 export function NotesProvider({ children }) {
   const [notes, dispatch] = useReducer(notesReducer, [], () => {
     const saved = localStorage.getItem("notes");
