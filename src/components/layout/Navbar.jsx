@@ -6,13 +6,31 @@ export default function Navbar() {
   return (
     <nav className="bg-gray-800 p-4">
       <div className="flex gap-4">
-        <NavLink to="/" className="text-white">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "text-blue-400 font-bold" : "text-white"
+          }
+          className="text-white"
+        >
           Notes
         </NavLink>
-        <NavLink to="/about" className="text-white">
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            isActive ? "text-blue-400 font-bold" : "text-white"
+          }
+          className="text-white"
+        >
           About
         </NavLink>
-        <NavLink to="/setting" className="text-white">
+        <NavLink
+          to="/setting"
+          className={({ isActive }) =>
+            isActive ? "text-blue-400 font-bold" : "text-white"
+          }
+          className="text-white"
+        >
           Setting
         </NavLink>
         <button

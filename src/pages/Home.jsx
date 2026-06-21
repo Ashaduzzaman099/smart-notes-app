@@ -1,8 +1,4 @@
-import {
-  useMemo,
-  useState,
-  useCallback,
-} from "react";
+import { useMemo, useState, useCallback } from "react";
 import Header from "../components/layout/Header";
 import NoteForm from "../components/notes/NoteForm";
 import NoteList from "../components/notes/NoteList";
@@ -14,15 +10,19 @@ export default function Home() {
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  const handleDelete =
-  useCallback((id) => {
-    deleteNote(id);
-  }, [deleteNote]);
+  const handleDelete = useCallback(
+    (id) => {
+      deleteNote(id);
+    },
+    [deleteNote],
+  );
 
-  const handleUpdate =
-  useCallback((id, data) => {
-    updateNote(id, data);
-  }, [updateNote]);
+  const handleUpdate = useCallback(
+    (id, data) => {
+      updateNote(id, data);
+    },
+    [updateNote],
+  );
 
   const filteredNotes = useMemo(() => {
     return notes.filter((note) => {
@@ -34,7 +34,7 @@ export default function Home() {
   }, [notes, searchTerm]);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-6">
+    <div>
       <Header />
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <NoteForm onAdd={addNote} />
