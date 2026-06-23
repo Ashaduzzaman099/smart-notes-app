@@ -1,4 +1,5 @@
 import { memo, useState } from "react";
+import Modal from "../ui/Modal";
 
 function NoteCard({ note, onDelete, onUpdate }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -6,6 +7,8 @@ function NoteCard({ note, onDelete, onUpdate }) {
   const [title, setTitle] = useState(note.title);
 
   const [content, setContent] = useState(note.content);
+
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const handleSave = () => {
     onUpdate(note.id, {
@@ -54,16 +57,20 @@ function NoteCard({ note, onDelete, onUpdate }) {
             </button>
 
             <button
-              onClick={() => onDelete(note.id)}
-              className="bg-red-600 px-3 py-1 rounded"
-            >
-              Delete
-            </button>
+            onClick={() =>
+              setShowDeleteModal(true)
+            }
+            className="bg-red-600 px-3 py-1 rounded" >
+            Delete
+          </button>
           </div>
         </>
       )}
     </div>
+
+    
   );
+  
 }
 
 export default memo(NoteCard);
