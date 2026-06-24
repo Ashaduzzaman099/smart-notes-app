@@ -57,20 +57,26 @@ function NoteCard({ note, onDelete, onUpdate }) {
             </button>
 
             <button
-            onClick={() =>
-              setShowDeleteModal(true)
-            }
-            className="bg-red-600 px-3 py-1 rounded" >
-            Delete
-          </button>
+              onClick={() => setShowDeleteModal(true)}
+              className="bg-red-600 px-3 py-1 rounded"
+            >
+              Delete
+            </button>
+            <Modal
+              isOpen={showDeleteModal}
+              title="Delete Note"
+              message="Are you sure you want to delete this note?"
+              onClose={() => setShowDeleteModal(false)}
+              onConfirm={() => {
+                onDelete(note.id);
+                setShowDeleteModal(false);
+              }}
+            />
           </div>
         </>
       )}
     </div>
-
-    
   );
-  
 }
 
 export default memo(NoteCard);
