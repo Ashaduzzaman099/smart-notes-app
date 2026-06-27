@@ -33,6 +33,7 @@ export default function Navbar() {
         >
           Setting
         </NavLink>
+        <NavLink to="/api-test">API Test</NavLink>
         <button
           onClick={toggleTheme}
           className="bg-gray-700 px-3 py-1 rounded text-white"
