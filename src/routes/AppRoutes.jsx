@@ -3,6 +3,7 @@ import MainLayout from "../components/layout/MainLayout";
 import NotesPage from "../pages/NotesPage";
 import AboutPage from "../pages/AboutPage";
 import SettingsPage from "../pages/SettingsPage";
+import TestApiPage from "../pages/TestApiPage";
 
 export default function AppRoutes() {
   return (
@@ -12,6 +13,7 @@ export default function AppRoutes() {
           <Route path="/" element={<NotesPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/setting" element={<SettingsPage />} />
+          <Route path="/api-test" element={<TestApiPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
