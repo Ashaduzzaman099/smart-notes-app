@@ -1,5 +1,5 @@
-import NoteCard from "./NoteCard";
 import EmptyState from "../ui/EmptyState";
+import NoteCard from "./NoteCard";
 
 export default function NoteList({ notes, onDelete, onUpdate }) {
   return (
