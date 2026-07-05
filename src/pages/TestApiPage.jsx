@@ -12,5 +12,5 @@ export default function TestApiPage() {
     fetchNotes();
   }, []);
 
-  return <div className="p-6">API Test Page</div>;
+  return <div className="p-6">API Test Medium</div>;
 }
